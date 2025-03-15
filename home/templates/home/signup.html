@@ -1,0 +1,40 @@
+{% extends "home/base.html"%} 
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'home/signup.css' %}">{% endblock extra_css %}
+
+
+{% block body %}
+    <div class="container" style="height:550px">
+      <div class="form-box Login">
+        
+        <h2>SIGN<span style="color: aqua">UP</span></h2>
+        <form method="post" action=" {% url 'signup'%} ">
+          {% csrf_token %}
+          <div class="input-box">
+            <input type="text" name="uname" required />
+            <label for="">Username</label>
+            <i class="bx bxs-user"></i>
+          </div>
+            <div class="input-box">
+            <input type="text" name="uemail" required />
+            <label for="">Email</label>
+           <i class='bx bxl-gmail'></i>
+          </div>
+          <div class="input-box">
+            <input type="text" name="upassword" required />
+            <label for="">Password</label>
+            <i class="bx bxs-lock-alt"></i>
+          </div> 
+          <div>
+          <button class="btn" type="submit">Submit</button>
+        </div>
+        </form>
+
+       
+      </div>
+      <div class="regi" style=" margin:480px 250px;flex-direction:column; display :flex">
+        <p>Already have account? <a href="{% url 'login' %}" class="SIGNUPLink">LogIn</a></p>
+      </div>
+    </div>
+  </body>
+  {% endblock %}

@@ -1,0 +1,51 @@
+{% extends "home/base.html"%} 
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/style.css' %}">
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+
+{% if messages %}
+  <div class="error">
+    {% for message in messages %}
+      <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+    <div class="container">
+      <div class="form-box Login">
+        <h2>LOG<span style="color: aqua">IN</span></h2>
+         
+        <form method="post" action = "{% url 'login' %}">
+          {% csrf_token %}
+          <div class="input-box">
+            <input type="text" name="uname" required />
+            <label for="">Username</label>
+            <i class="bx bxs-user"></i>
+          </div>
+          <div class="input-box">
+            <input type="Password" name = "upassword" required />
+            <label for="">Password</label>
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+        
+
+        <div>
+          <button class="btn" type="submit">Login</button>
+        </div>
+      </form>
+      </div>
+      <div class="regi">
+        <p>Don't have account? <a href="{% url 'signup'%}" class="SIGNUPLink">Sign Up</a></p>
+      </div>
+    </div>
+  </body>
+  {% endblock %}
